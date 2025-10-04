@@ -74,8 +74,10 @@ class QuizInterface:
             with open("result.txt", mode="a") as file:
                 file.write(f"\n\nTest I. True or False\nScore: {self.quiz.score}\n")
             os.chmod("result.txt", S_IREAD)
-            self.canvas.itemconfig(self.question_text,
-                                   text=f"Your score: {self.quiz.score}/{len(self.quiz.question_list)}")
+            self.canvas.coords(self.question_text, 50, 100)
+            self.canvas.itemconfig(self.question_text, anchor="nw", width=300,
+                                   font=("Times", 16, "normal"), fill=THEME_COLOR,
+                                   text=f"Test I Score: {self.quiz.score} / {len(self.quiz.question_list)}\n\nClose this window to proceed to Test II.")
             self.canvas.config(bg="white")
             self.button_true.config(state="disabled")
             self.button_false.config(state="disabled")

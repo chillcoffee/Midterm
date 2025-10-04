@@ -1,0 +1,423 @@
+import requests
+
+
+def get_questions():
+    parameters = {
+        "amount": 10,
+        "difficulty": 'easy',
+        "type": 'boolean',
+    }
+    response = requests.get("https://opentdb.com/api.php?", params=parameters)
+    response.raise_for_status()
+    data = response.json()
+    return data["results"]
+
+
+# question_data = get_questions()
+
+question_data = [
+    {
+        "question": "A database is a collection of unrelated data.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "A Database Management System (DBMS) is used to store, manage, and retrieve data efficiently.",
+        "correct_answer": "True",
+    },
+    # 28
+    {
+        "question": "Data and information are interchangeable terms.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "One of the advantages of DBMS is improved data security.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "The hierarchical data model organizes data in a network-like structure.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "A schema defines the logical structure of a database.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "The three-schema architecture includes physical, logical, and conceptual schemas.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "An instance of a database refers to its schema structure, not the actual data.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "An attribute of an entity is represented as oval in an ER diagram.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "The SQL command SELECT * FROM tblLabTest; retrieves all records from the tblLabTest table.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "DDL commands are used for defining and modifying database structures.",
+        "correct_answer": "True",
+    },
+
+    # 19
+    {
+        "question": "The INSERT INTO statement is used to delete data from a table.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "In SQL, CREATE TABLE is a DML command.",
+        "correct_answer": "False",
+    },
+
+    # 17
+    {
+        "question": "DELETE removes records while keeping the table structure intact.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "Normalization is used to minimize redundancy in database tables.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "1NF ensures that there are no repeating groups in a table.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "2NF removes all transitive dependencies from a relation.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "In 3NF, all non-key attributes must depend only on the primary key.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "BCNF is a higher form of normalization than 3NF.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "A relation is a table in a database and attribute means a column in a table.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "The ORDER BY clause is used to filter rows based on a condition.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "The LEFT() function extracts characters from the right side of a string.",
+        "correct_answer": "False",
+    },
+    {
+        "question": "In SQL, VARCHAR is used for storing string values.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "A record is one row of data in a table.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "The DROP command removes a table along with its data.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "The INSERT INTO command is used to add records into a table.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "A primary key uniquely identifies each row in a table.",
+        "correct_answer": "True",
+        "incorrect_answers": [
+            "False"
+        ]
+    },
+    {
+        "question": "A foreign key establishes a relationship between two tables.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "SQL stands for Structured Query Language.",
+        "correct_answer": "True",
+    },
+    {
+        "question": "SQL is a procedural language.",
+        "correct_answer": "False",
+    }
+]
+# Multiple Choice
+question_MC = [
+    {
+        "question": "Which of the following is NOT a function of a DBMS?",
+        "correct_answer": "Writing application code",
+        "incorrect_answers": [
+            "Writing application code", "Controlling access to data", "Managing data sharing",
+            "Ensuring data consistency"
+        ]
+    },
+    {
+        "question": "What is the primary purpose of a database system?",
+        "correct_answer": "To manage large amounts of structured data efficiently",
+        "incorrect_answers": [
+            "To store data in spreadsheets",
+            "To manage large amounts of structured data efficiently", "To execute JavaScript commands",
+            "To create graphics"
+        ]
+    },
+    {
+        "question": "Which of the following is an advantage of using a DBMS?",
+        "correct_answer": "Improved data security",
+        "incorrect_answers": [
+            "Data redundancy increases", "Improved data security",
+            "Data inconsistency increases", "Requires more manual data entry"
+        ]
+    },
+    {
+        "question": "Which of the following is a data model?",
+        "correct_answer": "Entity-Relationship",
+        "incorrect_answers": [
+            "Entity-Relationship", "HTML", "Java", "CSS"
+        ]
+    },
+    {
+        "question": "Which of the following is NOT a symbol used in ERD?",
+        "correct_answer": "Triangle",
+        "incorrect_answers": [
+            "Triangle", "Diamond", "Crow-Foot Notation", "Rectangle"
+        ]
+    },
+    {
+        "question": "Which SQL command is used to retrieve data from a table?",
+        "correct_answer": "SELECT",
+        "incorrect_answers": [
+            "SELECT", "INSERT", "UPDATE", "DELETE"
+        ]
+    },
+    {
+        "question": "Which SQL command is used to delete all records from a table without removing its structure?",
+        "correct_answer": "DELETE",
+        "incorrect_answers": [
+            "DELETE", "DROP", "CREATE", "WHERE"
+        ]
+    },
+    {
+        "question": "In SQL, which clause is used to filter the results of a query?",
+        "correct_answer": "WHERE",
+        "incorrect_answers": [
+            "WHERE", "ORDER BY", "ASC", "AND"
+        ]
+    },
+    {
+        "question": "What does the INSERT INTO command do?",
+        "correct_answer": "Adds new records into a table",
+        "incorrect_answers": [
+            "Removes data from a table", "Adds new records into a table", "Modifies existing data in a table",
+            "Retrieves data from a table"
+        ]
+    },
+    {
+        "question": "What is the main purpose of normalization?",
+        "correct_answer": "Minimize anomalies and redundancy",
+        "incorrect_answers": [
+            "Increase data redundancy", "Minimize anomalies and redundancy", "Make queries run slower",
+            "Convert tables into flat files"
+        ]
+    },
+    {
+        "question": "Which normal form ensures that there are no repeating groups in a table?",
+        "correct_answer": "1NF",
+        "incorrect_answers": [
+            "1NF", "2NF", "3NF", "4NF"
+        ]
+    },
+    {
+        "question": "Which normal form removes partial dependencies?",
+        "correct_answer": "2NF",
+        "incorrect_answers": [
+            "1NF", "2NF", "3NF", "4NF"
+        ]
+    },
+    {
+        "question": "A table is in 3NF if:",
+        "correct_answer": "It is in 2NF and all attributes depend only on the primary key",
+        "incorrect_answers": [
+            "It is in 2NF and all attributes depend only on the primary key", "It is in 1NF and has no duplicate rows",
+            "It contains only foreign keys", "It has only one column"
+        ]
+    },
+    {
+        "question": "What does the ORDER BY clause do?",
+        "correct_answer": "Sorts the result set",
+        "incorrect_answers": [
+            "Deletes rows from a table", "Sorts the result set", "Groups rows based on condition",
+            "Inserts new rows into a table"
+        ]
+    },
+    {
+        "question": "The function RIGHT(column_name, 3) extracts how many characters?",
+        "correct_answer": "3",
+        "incorrect_answers": [
+            "3", "1", "2", "4"
+        ]
+    },
+    {
+        "question": "A foreign key is used to:",
+        "correct_answer": "Establish relationships between tables",
+        "incorrect_answers": [
+            "Store primary keys", "Establish relationships between tables", "Delete records", "Duplicate data"
+        ]
+    },
+    {
+        "question": "Which command permanently removes a table from the database?",
+        "correct_answer": "DROP",
+        "incorrect_answers": [
+            "DROP", "DELETE", "CREATE", "CLEAR"
+        ]
+    },
+    {
+        "question": "In SQL, VARCHAR(25) means:",
+        "correct_answer": "A variable-length string up to 25 characters",
+        "incorrect_answers": [
+            "A fixed-length string of 25 characters", "A variable-length string up to 25 characters",
+            "A string with exactly 25 characters", "An integer with 25 digits"
+        ]
+    },
+    {
+        "question": "Which SQL clause is used to remove duplicate values in query results?",
+        "correct_answer": "DISTINCT",
+        "incorrect_answers": [
+            "DISTINCT", "ORDER BY", "IDENTITY", "WHERE"
+        ]
+    },
+    {
+        "question": "Which syntax is used in SQL Server to automatically increment primary key?",
+        "correct_answer": "IDENTITY(1,1)",
+        "incorrect_answers": [
+            "IDENTITY(1,1)", "IDENTITY(1,0)", "AUTOINCREMENT", "PRIMARY"
+        ]
+    },
+    {
+        "question": "Which of the following is not a SQL Server data type?",
+        "correct_answer": "BOOLEAN",
+        "incorrect_answers": [
+            "BOOLEAN", "INT", "MONEY", "VARCHAR"
+        ]
+    },
+    {
+        "question": "A primary key in a table must always be:",
+        "correct_answer": "Unique and NOT NULL",
+        "incorrect_answers": [
+            "Unique and NOT NULL", "A number", "An indexed column", "A foreign key"
+        ]
+    },
+    {
+        "question": "In a foreign key relationship, the foreign key must reference a:",
+        "correct_answer": "Primary key in another table",
+        "incorrect_answers": [
+            "Unique column in any table", "Column in the same table", "Primary key in another table",
+            "Randomly chosen column"
+        ]
+    },
+    {
+        "question": "The DROP DATABASE command is used to:",
+        "correct_answer": "Delete a database permanently",
+        "incorrect_answers": [
+            "Remove all records from a table", "Delete a database permanently",
+            "Delete all tables inside a database but keep the structure", "Remove duplicate values from a database"
+        ]
+    },
+    {
+        "question": "What is the correct SQL command if we want to show all employees whose salary is higher than 22,000?",
+        "correct_answer": "SELECT * FROM employees WHERE salary > 22000",
+        "incorrect_answers": [
+            "SELECT * FROM employees WHERE salary > 22000", "SELECT * FROM employees WHERE salary < 22000",
+            "SELECT * FROM employees WHERE salary = 22000", "SELECT * FROM employees WHERE salary != 22000"
+        ]
+    },
+    {
+        "question": "What will be the correct SQL command if we want to show all employee names that starts with 'R'?",
+        "correct_answer": "SELECT * FROM employees WHERE name LIKE 'R%'",
+        "incorrect_answers": [
+            "SELECT * FROM employees WHERE name LIKE 'R%'", "SELECT * FROM employees WHERE name LIKE '%R'",
+            "SELECT * FROM employees WHERE name LIKE '%R%'", "SELECT * FROM employees WHERE name LIKE 'R'"
+        ]
+    },
+    {
+        "question": "What does the WHERE clause do in an SQL SELECT statement?",
+        "correct_answer": "Filters records based on a condition",
+        "incorrect_answers": [
+            "Specifies the columns to display", "Filters records based on a condition", "Sorts the result set",
+            "Groups records into categories"
+        ]
+    },
+    {
+        "question": "Which SQL clause is used to sort the result set in ascending or descending order?",
+        "correct_answer": "ORDER BY",
+        "incorrect_answers": [
+            "ORDER BY", "WHERE", "INSERT INTO", "SELECT"
+        ]
+    },
+    {
+        "question": "The LIKE operator in SQL is used for:",
+        "correct_answer": "Performing pattern matching searches",
+        "incorrect_answers": [
+            "Performing pattern matching searches", "Checking numerical conditions", "Sorting data",
+            "Showing duplicate results"
+        ]
+    },
+    {
+        "question": "What symbol is used as a wildcard in SQL to match any number of characters when using LIKE?",
+        "correct_answer": "%",
+        "incorrect_answers": [
+            "%", "_", "--", "#"
+        ]
+    },
+    {
+        "question": "The BETWEEN operator is used to:",
+        "correct_answer": "Select values within a given range",
+        "incorrect_answers": [
+            "Search for NULL values", "Select values within a given range", "Sort data in descending order",
+            "Select values that are not within a given range"
+        ]
+    },
+    {
+        "question": "How do you retrieve records where the age column is greater than 30?",
+        "correct_answer": "SELECT * FROM table WHERE age > 30;",
+        "incorrect_answers": [
+            "SELECT * FROM table WHERE age > 30;", "SELECT * FROM table WHERE age < 30;",
+            "SELECT * FROM table WHERE age = 30;", "SELECT * FROM table WHERE age != 30;"
+        ]
+    },
+    {
+        "question": "The IN operator in SQL is used to:",
+        "correct_answer": "Select multiple values in a WHERE condition",
+        "incorrect_answers": [
+            "Select multiple values in a WHERE condition", "Sort query results", "Group records based on a column",
+            "Specify column constraints"
+        ]
+    },
+    {
+        "question": "What will be the output of SELECT * FROM Students ORDER BY age DESC;?",
+        "correct_answer": "Students sorted by age in descending order",
+        "incorrect_answers": [
+            "Students sorted by age in ascending order", "Students sorted by age in descending order",
+            "Students sorted alphabetically", "Students filtered where age is descending"
+        ]
+    },
+    {
+        "question": "How do you alias a column name in SQL?",
+        "correct_answer": "SELECT name AS full_name FROM users;",
+        "incorrect_answers": [
+            "SELECT name AS full_name FROM users;", "SELECT name full_name FROM users;",
+            "SELECT name ALIAS full_name FROM users;", "SELECT name IS full_name FROM users;"
+        ]
+    },
+
+]
+print(f"TF Questions: {len(question_data)}")
+print(f"MC Questions: {len(question_MC)}")
+count = 0
+for question in question_data:
+    if question["correct_answer"] == "True":
+        count += 1
+print(count)

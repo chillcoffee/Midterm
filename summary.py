@@ -22,13 +22,13 @@ class Summary:
 
         self.canvas = Canvas(width=550, height=250, bg="WHITE")
         self.canvas.grid(row=1, column=0, pady=20)
-        # todo: anchor or center the text
+
         self.question_text = self.canvas.create_text(
             270, 115,
             width=450,
             text=q_text,
-            fill="black",
-            font=("Calibri", 16, "italic"),
+            fill=THEME_COLOR,
+            font=("Times", 16, "normal"),
             anchor="center"
         )
 

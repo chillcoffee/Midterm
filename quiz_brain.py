@@ -13,9 +13,6 @@ class QuizBrain:
         self.current_question = None
         self.correct_letter = 'E'
 
-    def get_question_number(self):
-        return self.question_number
-
     def still_has_questions(self):
         return self.question_number < len(self.question_list)
 
@@ -55,6 +52,8 @@ class QuizBrain:
     def next_skipped_mcquestion(self):
         self.current_question = self.skipped_list.pop(0)
         skipped_number = self.skipped_numbers.pop(0)
+        # print skipped items
+        # print(f"skipped items: {self.skipped_numbers}")
         q_text = html.unescape(self.current_question.text)
         q_text = f"{skipped_number}. {q_text}"
         choices_list = self.current_question.choices

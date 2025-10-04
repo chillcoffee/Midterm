@@ -19,9 +19,9 @@ def get_summary():
 
     scores = scores + f"\n{name_ui.name}\t{name_ui.section}"
     scores = scores + "\n---------------------------------------------------------"
-    scores = scores + f"\nTest I: {quiz_ui.tf_score}"
-    scores = scores + f"\nTest II: {mc_quiz_ui.mc_score} * 2 = {mc_quiz_ui.mc_score * 2}"
-    scores = scores + f"\n\nFINAL SCORE: {total}/100"
+    scores = scores + f"\nTest I: \t\t{quiz_ui.tf_score} / {len(quiz_ui.quiz.question_list)}"
+    scores = scores + f"\nTest II: \t\t{mc_quiz_ui.mc_score * 2} / {len(mc_quiz_ui.quiz.question_list) * 2}"
+    scores = scores + f"\n\nFINAL SCORE: \t{total} / {len(mc_quiz_ui.quiz.question_list) * 2 + len(quiz_ui.quiz.question_list)} "
     scores = scores + "\n---------------------------------------------------------"
     scores = scores + "\nRAISE YOUR HAND \nfor your score to be recorded."
 
@@ -71,7 +71,7 @@ for question in question_data:
     question_answer = question["correct_answer"]
     new_question = Question(question_text, question_answer, [])
     question_bank.append(new_question)
-    # if len(question_bank) == 2:   #for debugging
+    # if len(question_bank) == 3:  # for debugging
     #     break
 
 name_ui = Name()  # get name and section record to file

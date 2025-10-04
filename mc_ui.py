@@ -84,9 +84,10 @@ class MCQuizInterface:
             with open("result.txt", mode="a") as file:
                 file.write(f"\n\nTest II. Multiple Choice\nScore: {self.quiz.score * 2}\n")
             os.chmod("result.txt", S_IREAD)
-            self.canvas.itemconfig(self.question_text,
-                                   font=("Monotype", 16, "italic"),
-                                   text=f"Test II Score: {self.quiz.score} * 2 = {self.quiz.score * 2} out of {len(self.quiz.question_list) * 2}")
+            self.canvas.coords(self.question_text, 100, 100)
+            self.canvas.itemconfig(self.question_text, anchor="nw",
+                                   font=("Times", 18, "normal"), fill=THEME_COLOR,
+                                   text=f"Test II (2 points each)\nScore: {self.quiz.score * 2} / {len(self.quiz.question_list) * 2}")
             self.canvas.config(bg="white")
             self.button_A.config(state="disabled")
             self.button_B.config(state="disabled")
@@ -112,10 +113,13 @@ class MCQuizInterface:
     def click_next(self):
         # put the current question in skipped_list
         question = self.canvas.itemcget(self.question_text, 'text')
-        item = question[0]
+        item = question[0]  # get the item #
 
         self.quiz.skipped_numbers.append(item)
         self.quiz.skipped_list.append(self.quiz.current_question)
+
+        # print skipped numbers
+        # print(f"iniside next: {self.quiz.skipped_numbers}")
 
         if len(self.quiz.skipped_list) == 1 and self.quiz.still_has_questions() == False:
             self.button_skip.config(state="disabled")
