@@ -71,17 +71,13 @@ for question in question_data:
     question_answer = question["correct_answer"]
     new_question = Question(question_text, question_answer, [])
     question_bank.append(new_question)
-    # if len(question_bank) == 2:
+    # if len(question_bank) == 2:   #for debugging
     #     break
 
-name_ui = Name()
-random.shuffle(question_bank)
-quiz = QuizBrain(question_bank)
-quiz_ui = QuizInterface(quiz)
-mc_quiz_ui = MCQuizInterface()
-write_final_scores()
-summary = Summary(get_summary())
-
-# When done editing, compile by:
-# open Terminal > then type the command
-# pyinstaller main.py --onefile
+name_ui = Name()  # get name and section record to file
+random.shuffle(question_bank)  # shuffle question bank for TF questions
+quiz = QuizBrain(question_bank)  # feed questions to quiz brain
+quiz_ui = QuizInterface(quiz)  # use quiz brain to start UI for TF Test I
+mc_quiz_ui = MCQuizInterface()  # call UI for multiple choice questions
+write_final_scores()  # write to file of scores
+summary = Summary(get_summary())  # call UI to show final results
