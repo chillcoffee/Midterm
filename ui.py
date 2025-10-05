@@ -93,9 +93,11 @@ class QuizInterface:
     def click_next(self):
         # put the current question in skipped_list
         question = self.canvas.itemcget(self.question_text, 'text')
-        item = question[0]
+        dot_index = question.index(".")
+        item = question[:dot_index]
 
         self.quiz.skipped_numbers.append(item)
+        print(self.quiz.skipped_numbers)
         self.quiz.skipped_list.append(self.quiz.current_question)
 
         if len(self.quiz.skipped_list) == 1 and self.quiz.still_has_questions() == False:

@@ -25,6 +25,7 @@ class QuizBrain:
     def next_skipped_question(self):
         self.current_question = self.skipped_list.pop(0)
         skipped_number = self.skipped_numbers.pop(0)
+        print(f"inside next skip{self.skipped_numbers}")
         q_text = html.unescape(self.current_question.text)
         return f"{skipped_number}. {q_text}"
 

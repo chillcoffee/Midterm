@@ -113,7 +113,8 @@ class MCQuizInterface:
     def click_next(self):
         # put the current question in skipped_list
         question = self.canvas.itemcget(self.question_text, 'text')
-        item = question[0]  # get the item #
+        dot_index = question.index(".")
+        item = question[:dot_index]
 
         self.quiz.skipped_numbers.append(item)
         self.quiz.skipped_list.append(self.quiz.current_question)
