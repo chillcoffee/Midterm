@@ -74,7 +74,7 @@ question_data = [
 
     # 17
     {
-        "question": "$ symbol can be used when your condition uses the LIKE operator",
+        "question": "$ symbol can be used when your condition uses the LIKE operator.",
         "correct_answer": "False",
     },
     {
@@ -255,7 +255,7 @@ question_MC = [
     },
     {
         "question": "The function RIGHT(column_name, 3) will result to?",
-        "correct_answer": "last three letters of the value",
+        "correct_answer": "last three characters of the value",
         "incorrect_answers": [
             "last three characters of the value", "first three characters of the value",
             "first three columns of the table",
@@ -286,12 +286,12 @@ question_MC = [
     },
     {
         "question": "Which of the following is not a correct INSERT INTO statement?",
-        "correct_answer": "INSERT INTO tblStudents (Name, Course, Year) VALUES ('Elaris Reyes','BSIS', '3')",
+        "correct_answer": "INSERT INTO tblStudents (Name, Course, Year) \n\tVALUES ('Elaris Reyes','BSIS', '3')",
         "incorrect_answers": [
             "INSERT INTO tblStudents VALUES ('Elaris Reyes','BSIS', 3, 'A')",
-            "INSERT INTO tblStudents (Name, Course, Year, Section) VALUES ('Elaris Reyes','BSIS', 3, 'A')",
-            "INSERT INTO tblStudents (Name, Course, Year) VALUES ('Elaris Reyes','BSIS', 3)",
-            "INSERT INTO tblStudents (Name, Course, Year) VALUES ('Elaris Reyes','BSIS', '3')"
+            "INSERT INTO tblStudents (Name, Course, Year, Section) \n\tVALUES ('Elaris Reyes','BSIS', 3, 'A')",
+            "INSERT INTO tblStudents (Name, Course, Year) \n\tVALUES ('Elaris Reyes','BSIS', 3)",
+            "INSERT INTO tblStudents (Name, Course, Year) \n\tVALUES ('Elaris Reyes','BSIS', '3')"
         ]
     },
     {
@@ -394,15 +394,17 @@ question_MC = [
         ]
     },
     {
-        "question": "The IN operator in SQL is used to:",
-        "correct_answer": "Select multiple values in a WHERE condition",
+        "question": "Which of the following is an incorrect CREATE TABLE command?",
+        "correct_answer": "CREATE TABLE tblBookBorrowed \n\t(BookID int IDENTITY(1,1), BookTitle VARCHAR())",
         "incorrect_answers": [
-            "Select multiple values in a WHERE condition", "Sort query results", "Group records based on a column",
-            "Specify column constraints"
+            "CREATE TABLE tblBookBorrowed \n\t(BookID int IDENTITY(1,1), BookTitle VARCHAR(50))",
+            "CREATE TABLE tblBookBorrowed (BookID int, BookTitle VARCHAR(50))",
+            "CREATE TABLE tblBookBorrowed \n\t(BookID int IDENTITY(1,1), BookTitle VARCHAR())",
+            "CREATE TABLE tblBookBorrowed \n\t(BookID int IDENTITY(1,5), BookTitle VARCHAR(50))"
         ]
     },
     {
-        "question": "What will be the output of SELECT * FROM Students ORDER BY age DESC;?",
+        "question": "What will be the output of SELECT * FROM Students ORDER BY age DESC?",
         "correct_answer": "Students sorted by age in descending order",
         "incorrect_answers": [
             "Students sorted by age in ascending order", "Students sorted by age in descending order",

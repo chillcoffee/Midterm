@@ -31,7 +31,7 @@ class MCQuizInterface:
             width=500,
             text="Some Question Text",
             fill="black",
-            font=("Calibri", 14, "italic"),
+            font=("Calibri", 12, "italic"),
             anchor="nw"
         )
         a_img = PhotoImage(file="A.png")
