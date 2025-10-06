@@ -38,28 +38,28 @@ question_data = [
         "correct_answer": "False",
     },
     {
-        "question": "A schema defines the logical structure of a database.",
-        "correct_answer": "True",
+        "question": "Double quotes are required when inserting string values into tables.",
+        "correct_answer": "False",
     },
     {
-        "question": "The three-schema architecture includes physical, logical, and conceptual schemas.",
-        "correct_answer": "True",
+        "question": "SQL is the language used to communicate with foreign tables.",
+        "correct_answer": "False",
     },
     {
         "question": "An instance of a database refers to its schema structure, not the actual data.",
         "correct_answer": "False",
     },
     {
-        "question": "An attribute of an entity is represented as oval in an ER diagram.",
-        "correct_answer": "True",
+        "question": "An entity is represented as oval in an ER diagram.",
+        "correct_answer": "False",
     },
     {
         "question": "The SQL command SELECT * FROM tblLabTest; retrieves all records from the tblLabTest table.",
         "correct_answer": "True",
     },
     {
-        "question": "DDL commands are used for defining and modifying database structures.",
-        "correct_answer": "True",
+        "question": "DML commands are used for defining and modifying database structures.",
+        "correct_answer": "False",
     },
 
     # 19
@@ -68,21 +68,21 @@ question_data = [
         "correct_answer": "False",
     },
     {
-        "question": "In SQL, CREATE TABLE is a DML command.",
+        "question": "ASC is required if you want to use ORDER By alphabetically.",
         "correct_answer": "False",
     },
 
     # 17
     {
-        "question": "DELETE removes records while keeping the table structure intact.",
-        "correct_answer": "True",
+        "question": "$ symbol can be used when your condition uses the LIKE operator",
+        "correct_answer": "False",
     },
     {
         "question": "Normalization is used to minimize redundancy in database tables.",
         "correct_answer": "True",
     },
     {
-        "question": "1NF ensures that there are no repeating groups in a table.",
+        "question": "1NF ensures that there are no multivalued attributes in one table.",
         "correct_answer": "True",
     },
     {
@@ -94,7 +94,7 @@ question_data = [
         "correct_answer": "True",
     },
     {
-        "question": "BCNF is a higher form of normalization than 3NF.",
+        "question": "WHERE clause should always be followed by a condition that evaluates to true or false.",
         "correct_answer": "True",
     },
     {
@@ -106,7 +106,7 @@ question_data = [
         "correct_answer": "False",
     },
     {
-        "question": "The LEFT() function extracts characters from the right side of a string.",
+        "question": "The LEFT() function extracts characters from the end of a varchar() value.",
         "correct_answer": "False",
     },
     {
@@ -118,7 +118,7 @@ question_data = [
         "correct_answer": "True",
     },
     {
-        "question": "The DROP command removes a table along with its data.",
+        "question": "INSERT INTO command can be used without specifying the column names of the table.",
         "correct_answer": "True",
     },
     {
@@ -176,7 +176,7 @@ question_MC = [
         "question": "Which of the following is a data model?",
         "correct_answer": "Entity-Relationship",
         "incorrect_answers": [
-            "Entity-Relationship", "HTML", "Java", "CSS"
+            "Entity-Relationship", "DML", "BCNF", "Thrree-Schema Architecture"
         ]
     },
     {
@@ -224,10 +224,10 @@ question_MC = [
         ]
     },
     {
-        "question": "Which normal form ensures that there are no repeating groups in a table?",
-        "correct_answer": "1NF",
+        "question": "Which of the following is not a comparison operator used in WHERE clause?",
+        "correct_answer": "+=",
         "incorrect_answers": [
-            "1NF", "2NF", "3NF", "4NF"
+            "=", ">", ">=", "+="
         ]
     },
     {
@@ -254,10 +254,12 @@ question_MC = [
         ]
     },
     {
-        "question": "The function RIGHT(column_name, 3) extracts how many characters?",
-        "correct_answer": "3",
+        "question": "The function RIGHT(column_name, 3) will result to?",
+        "correct_answer": "last three letters of the value",
         "incorrect_answers": [
-            "3", "1", "2", "4"
+            "last three characters of the value", "first three characters of the value",
+            "first three columns of the table",
+            "last three columns of the table"
         ]
     },
     {
@@ -283,10 +285,13 @@ question_MC = [
         ]
     },
     {
-        "question": "Which SQL clause is used to remove duplicate values in query results?",
-        "correct_answer": "DISTINCT",
+        "question": "Which of the following is not a correct INSERT INTO statement?",
+        "correct_answer": "INSERT INTO tblStudents (Name, Course, Year) VALUES ('Elaris Reyes','BSIS', '3')",
         "incorrect_answers": [
-            "DISTINCT", "ORDER BY", "IDENTITY", "WHERE"
+            "INSERT INTO tblStudents VALUES ('Elaris Reyes','BSIS', 3, 'A')",
+            "INSERT INTO tblStudents (Name, Course, Year, Section) VALUES ('Elaris Reyes','BSIS', 3, 'A')",
+            "INSERT INTO tblStudents (Name, Course, Year) VALUES ('Elaris Reyes','BSIS', 3)",
+            "INSERT INTO tblStudents (Name, Course, Year) VALUES ('Elaris Reyes','BSIS', '3')"
         ]
     },
     {
@@ -297,8 +302,8 @@ question_MC = [
         ]
     },
     {
-        "question": "Which of the following is not a SQL Server data type?",
-        "correct_answer": "BOOLEAN",
+        "question": "Which of the following is a data type used in SQL Server for values that are whole numbers?",
+        "correct_answer": "INT",
         "incorrect_answers": [
             "BOOLEAN", "INT", "MONEY", "VARCHAR"
         ]
@@ -311,7 +316,7 @@ question_MC = [
         ]
     },
     {
-        "question": "In a foreign key relationship, the foreign key must reference a:",
+        "question": "In a foreign key relationship, the foreign key must be a:",
         "correct_answer": "Primary key in another table",
         "incorrect_answers": [
             "Unique column in any table", "Column in the same table", "Primary key in another table",
@@ -405,11 +410,11 @@ question_MC = [
         ]
     },
     {
-        "question": "How do you alias a column name in SQL?",
-        "correct_answer": "SELECT name AS full_name FROM users;",
+        "question": "Which of the following commands is used to setup table structure?",
+        "correct_answer": "CREATE TABLE",
         "incorrect_answers": [
-            "SELECT name AS full_name FROM users;", "SELECT name full_name FROM users;",
-            "SELECT name ALIAS full_name FROM users;", "SELECT name IS full_name FROM users;"
+            "CREATE TABLE IN DATABASE", "CREATE TABLE",
+            "CONNECT TO DB ENGINE", "CONNECT TO OBJECT TABLE"
         ]
     },
 

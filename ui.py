@@ -97,7 +97,7 @@ class QuizInterface:
         item = question[:dot_index]
 
         self.quiz.skipped_numbers.append(item)
-        print(self.quiz.skipped_numbers)
+        # print(self.quiz.skipped_numbers)
         self.quiz.skipped_list.append(self.quiz.current_question)
 
         if len(self.quiz.skipped_list) == 1 and self.quiz.still_has_questions() == False:
