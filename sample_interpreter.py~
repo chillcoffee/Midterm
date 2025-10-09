@@ -1,4 +1,0 @@
-number = float(3)     #int number = (float) 3;
-print(number)
-number = 'three'
-print(number)
