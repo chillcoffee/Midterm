@@ -109,3 +109,18 @@ Final Score: 0/100
 Name: 
 Yr & Section: 
 Final Score: 0/100
+
+---------------------------------------------------------
+Name: Ruffa Resentes
+Yr & Section: BSEMC 2A
+
+Test I. True or False
+Score: 30
+
+
+Test II. Multiple Choice
+Score: 70
+
+Final Score: 100/100
+
+---------------------------------------------------------
