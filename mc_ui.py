@@ -1,11 +1,13 @@
 import os
+import pyautogui
 from tkinter import *
 
 from quiz_brain import QuizBrain
 from mc_quiz import MultipleChoiceQuiz
 from stat import S_IREAD, S_IWRITE
 
-THEME_COLOR = "#92664A"
+# THEME_COLOR = "#fb8da0"       #PINK for EMC
+THEME_COLOR = "#765341"  # BROWN for BSIS
 
 
 class MCQuizInterface:
@@ -27,7 +29,7 @@ class MCQuizInterface:
         self.canvas = Canvas(width=550, height=250, bg="WHITE")
         self.canvas.grid(row=1, column=0, columnspan=5, pady=20)
         self.question_text = self.canvas.create_text(
-            25, 50,
+            25, 20,
             width=500,
             text="Some Question Text",
             fill="black",
@@ -66,7 +68,43 @@ class MCQuizInterface:
         x = (screen_width - width) // 2
         y = (screen_height - height) // 2
         self.window.geometry(f"{width}x{height}+{x}+{y}")
+        self.check_mouse_position()
         self.window.mainloop()
+
+    def check_mouse_position(self):
+        # Get mouse coordinates
+        mx, my = pyautogui.position()
+
+        # Get total window and client area bounds
+        self.window.update_idletasks()
+        win_x = self.window.winfo_rootx()
+        win_y = self.window.winfo_rooty()
+        client_x = self.window.winfo_x()
+        client_y = self.window.winfo_y()
+        width = self.window.winfo_width()
+        height = self.window.winfo_height()
+
+        # Compute title bar height and border width
+        titlebar_height = win_y - client_y
+        border_width = win_x - client_x
+
+        # Define client (usable) area boundaries
+        x1 = win_x + border_width
+        y1 = win_y + titlebar_height
+        x2 = x1 + width - (2 * border_width)
+        y2 = y1 + height - border_width
+
+        # Only move the mouse back if it left the client area
+        if not (x1 <= mx <= x2 and y1 <= my <= y2):
+            # But ignore top title bar zone (minimize, close, drag)
+            if not (win_x <= mx <= win_x + width and win_y - 10 <= my <= y1):
+                # Move to center of window
+                cx = (x1 + x2) // 2
+                cy = (y1 + y2) // 2
+                pyautogui.moveTo(cx, cy, duration=0.1)
+
+        # Recheck after 100ms
+        self.window.after(5000, self.check_mouse_position)
 
     def get_next_question(self):
         self.label_score.config(text=f"Score: {self.quiz.score} / {len(self.quiz.question_list)}")
@@ -84,10 +122,10 @@ class MCQuizInterface:
             with open("result.txt", mode="a") as file:
                 file.write(f"\n\nTest II. Multiple Choice\nScore: {self.quiz.score * 2}\n")
             os.chmod("result.txt", S_IREAD)
-            self.canvas.coords(self.question_text, 100, 100)
+            self.canvas.coords(self.question_text, 80, 80)
             self.canvas.itemconfig(self.question_text, anchor="nw",
                                    font=("Times", 18, "normal"), fill=THEME_COLOR,
-                                   text=f"Test II (2 points each)\nScore: {self.quiz.score * 2} / {len(self.quiz.question_list) * 2}")
+                                   text=f"Test II (2 points each)\nScore: {self.quiz.score * 2} / {len(self.quiz.question_list) * 2}\n\nClose this window to see your FINAL SCORE.")
             self.canvas.config(bg="white")
             self.button_A.config(state="disabled")
             self.button_B.config(state="disabled")

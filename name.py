@@ -2,7 +2,8 @@ import os
 from tkinter import *
 from stat import S_IREAD, S_IWRITE
 
-THEME_COLOR = "#92664A"
+# THEME_COLOR = "#fb8da0"       #PINK for EMC
+THEME_COLOR = "#765341"  # BROWN for BSIS
 
 
 class Name:
@@ -23,7 +24,7 @@ class Name:
         self.window = Tk()
         self.window.eval('tk::PlaceWindow . center')
 
-        self.window.title("Midterm Exam CC 105")
+        self.window.title("Midterm Exam CC 104")
         self.window.config(bg=THEME_COLOR, padx=20, pady=20, width=600, height=400)
         self.window.resizable(False, False)
         self.label_name = Label(text="Name: ", fg="WHITE", bg=THEME_COLOR,

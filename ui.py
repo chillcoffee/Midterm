@@ -1,16 +1,19 @@
 import os
+import pyautogui
 from tkinter import *
 
 from quiz_brain import QuizBrain
 from stat import S_IREAD, S_IWRITE
 
-THEME_COLOR = "#92664A"
+# THEME_COLOR = "#fb8da0"       #PINK for EMC
+THEME_COLOR = "#765341"  # BROWN for BSIS
 
 
 class QuizInterface:
 
     def __init__(self, quiz_brain: QuizBrain):
         self.tf_score = 0
+        self.attempt = 0
         self.quiz = quiz_brain
         self.window = Tk()
         self.window.eval('tk::PlaceWindow . center')
@@ -53,10 +56,46 @@ class QuizInterface:
 
         screen_width = self.window.winfo_screenwidth()
         screen_height = self.window.winfo_screenheight()
-        x = (screen_width - width) // 2
-        y = (screen_height - height) // 2
-        self.window.geometry(f"{width}x{height}+{x}+{y}")
+        self.x = (screen_width - width) // 2
+        self.y = (screen_height - height) // 2
+        self.window.geometry(f"{width}x{height}+{self.x}+{self.y}")
+        self.check_mouse_position()
         self.window.mainloop()
+
+    def check_mouse_position(self):
+        # Get mouse coordinates
+        mx, my = pyautogui.position()
+
+        # Get total window and client area bounds
+        self.window.update_idletasks()
+        win_x = self.window.winfo_rootx()
+        win_y = self.window.winfo_rooty()
+        client_x = self.window.winfo_x()
+        client_y = self.window.winfo_y()
+        width = self.window.winfo_width()
+        height = self.window.winfo_height()
+
+        # Compute title bar height and border width
+        titlebar_height = win_y - client_y
+        border_width = win_x - client_x
+
+        # Define client (usable) area boundaries
+        x1 = win_x + border_width
+        y1 = win_y + titlebar_height
+        x2 = x1 + width - (2 * border_width)
+        y2 = y1 + height - border_width
+
+        # Only move the mouse back if it left the client area
+        if not (x1 <= mx <= x2 and y1 <= my <= y2):
+            # But ignore top title bar zone (minimize, close, drag)
+            if not (win_x <= mx <= win_x + width and win_y - 10 <= my <= y1):
+                # Move to center of window
+                cx = (x1 + x2) // 2
+                cy = (y1 + y2) // 2
+                pyautogui.moveTo(cx, cy, duration=0.1)
+
+        # Recheck after 100ms
+        self.window.after(5000, self.check_mouse_position)
 
     def get_next_question(self):
         self.label_score.config(text=f"Score: {self.quiz.score} / {len(self.quiz.question_list)}")

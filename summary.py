@@ -1,6 +1,7 @@
 from tkinter import *
 
-THEME_COLOR = "#92664A"
+# THEME_COLOR = "#fb8da0"       #PINK for EMC
+THEME_COLOR = "#765341"  # BROWN for BSIS
 
 
 class Summary:
@@ -10,7 +11,7 @@ class Summary:
         self.window.eval('tk::PlaceWindow . center')
         quote = "Good programmers doesn't worry about the code, \nbut they problem more about the data structure and their relationships.\n~Linus Torvalds"
 
-        self.window.title("CC 105 MIDTERM EXAM")
+        self.window.title("CC 104 MIDTERM EXAM")
         self.window.config(bg=THEME_COLOR, padx=20, pady=20)
 
         self.label_score = Label(text=quote, fg="WHITE", bg=THEME_COLOR, font=("Monotype Corsiva", 14, "italic"))
@@ -27,7 +28,7 @@ class Summary:
             270, 115,
             width=450,
             text=q_text,
-            fill=THEME_COLOR,
+            fill="BLACK",
             font=("Times", 16, "normal"),
             anchor="center"
         )
